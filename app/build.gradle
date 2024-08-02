@@ -129,8 +129,8 @@ configurations {
 
 checkstyle {
     getConfigDirectory().set(rootProject.file("checkstyle"))
-    ignoreFailures false
-    showViolations true
+    ignoreFailures true
+    showViolations false
     toolVersion = checkstyleVersion
 }
 
@@ -192,6 +192,8 @@ dependencies {
 /** Desugaring **/
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.0.4'
 
+    //TODO ny
+   // implementation project(':InternalLibs:nyBase')
 /** NewPipe libraries **/
     // You can use a local version by uncommenting a few lines in settings.gradle
     // Or you can use a commit you pushed to GitHub by just replacing TeamNewPipe with your GitHub

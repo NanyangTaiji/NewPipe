@@ -28,6 +28,7 @@ import org.schabi.newpipe.MainActivity;
 import org.schabi.newpipe.NewPipeDatabase;
 import org.schabi.newpipe.R;
 import org.schabi.newpipe.RouterActivity;
+import org.schabi.newpipe.YoutubeFragment;
 import org.schabi.newpipe.about.AboutActivity;
 import org.schabi.newpipe.database.feed.model.FeedGroupEntity;
 import org.schabi.newpipe.download.DownloadActivity;
@@ -523,10 +524,19 @@ public final class NavigationHelper {
         openFeedFragment(fragmentManager, FeedGroupEntity.GROUP_ALL_ID, null);
     }
 
+    //TODO
     public static void openFeedFragment(final FragmentManager fragmentManager, final long groupId,
                                         @Nullable final String groupName) {
         defaultTransaction(fragmentManager)
-                .replace(R.id.fragment_holder, FeedFragment.newInstance(groupId, groupName))
+                .replace(R.id.fragment_holder, new YoutubeFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    //TODO ny
+    public static void openYoutubeFragment(final FragmentManager fragmentManager) {
+        defaultTransaction(fragmentManager)
+                .replace(R.id.fragment_holder, new YoutubeFragment())
                 .addToBackStack(null)
                 .commit();
     }
@@ -731,4 +741,5 @@ public final class NavigationHelper {
 
         ProcessPhoenix.triggerRebirth(activity.getApplicationContext());
     }
+
 }

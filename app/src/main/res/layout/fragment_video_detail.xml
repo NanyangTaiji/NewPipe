@@ -182,8 +182,8 @@
 
                     <ImageView
                         android:id="@+id/detail_toggle_secondary_controls_view"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="13dp"
                         android:layout_gravity="top|end"
                         android:layout_marginTop="11dp"
                         android:layout_marginEnd="10dp"
@@ -481,7 +481,7 @@
                         android:orientation="horizontal"
                         android:paddingHorizontal="@dimen/detail_control_padding"
                         android:paddingBottom="@dimen/detail_control_padding"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         tools:visibility="visible">
 
                         <org.schabi.newpipe.views.NewPipeTextView

@@ -119,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int ITEM_ID_BOOKMARKS = -3;
     private static final int ITEM_ID_DOWNLOADS = -4;
     private static final int ITEM_ID_HISTORY = -5;
+
+    //TODO ny
+    private static final int ITEM_ID_YOUTUBE = -6;
     private static final int ITEM_ID_SETTINGS = 0;
     private static final int ITEM_ID_ABOUT = 1;
 
@@ -241,13 +244,16 @@ public class MainActivity extends AppCompatActivity {
             kioskMenuItemId++;
         }
 
-        drawerLayoutBinding.navigation.getMenu()
+     /*   drawerLayoutBinding.navigation.getMenu()
                 .add(R.id.menu_tabs_group, ITEM_ID_SUBSCRIPTIONS, ORDER,
                         R.string.tab_subscriptions)
-                .setIcon(R.drawable.ic_tv);
+                .setIcon(R.drawable.ic_tv);*/
         drawerLayoutBinding.navigation.getMenu()
-                .add(R.id.menu_tabs_group, ITEM_ID_FEED, ORDER, R.string.fragment_feed_title)
+                .add(R.id.menu_tabs_group, ITEM_ID_FEED, ORDER, "Youtube Official")
                 .setIcon(R.drawable.ic_subscriptions);
+    //    drawerLayoutBinding.navigation.getMenu()
+             //   .add(R.id.menu_tabs_group, ITEM_ID_YOUTUBE, ORDER, "Youtube Official")
+               // .setIcon(R.drawable.ic_youtube_play);
         drawerLayoutBinding.navigation.getMenu()
                 .add(R.id.menu_tabs_group, ITEM_ID_BOOKMARKS, ORDER, R.string.tab_bookmarks)
                 .setIcon(R.drawable.ic_bookmark);
@@ -302,11 +308,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void tabSelected(final MenuItem item) throws ExtractionException {
         switch (item.getItemId()) {
-            case ITEM_ID_SUBSCRIPTIONS:
+           /* case ITEM_ID_SUBSCRIPTIONS:
                 NavigationHelper.openSubscriptionFragment(getSupportFragmentManager());
                 break;
             case ITEM_ID_FEED:
                 NavigationHelper.openFeedFragment(getSupportFragmentManager());
+                break;*/
+            //TODO ny
+            case ITEM_ID_FEED:
+                NavigationHelper.openYoutubeFragment(getSupportFragmentManager());
                 break;
             case ITEM_ID_BOOKMARKS:
                 NavigationHelper.openBookmarksFragment(getSupportFragmentManager());

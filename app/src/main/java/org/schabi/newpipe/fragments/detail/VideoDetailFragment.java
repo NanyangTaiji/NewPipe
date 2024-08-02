@@ -450,7 +450,9 @@ public final class VideoDetailFragment
     //////////////////////////////////////////////////////////////////////////*/
 
     private void setOnClickListeners() {
-        binding.detailTitleRootLayout.setOnClickListener(v -> toggleTitleAndSecondaryControls());
+       // binding.detailTitleRootLayout.setOnClickListener(v -> toggleTitleAndSecondaryControls());
+        //TODO ny open seconddaryControls
+        //
         binding.detailUploaderRootLayout.setOnClickListener(makeOnClickListener(info -> {
             if (isEmpty(info.getSubChannelUrl())) {
                 if (!isEmpty(info.getUploaderUrl())) {
@@ -498,13 +500,18 @@ public final class VideoDetailFragment
                 openDownloadDialog();
             }
         });
+        //TODO ny
         binding.detailControlsShare.setOnClickListener(makeOnClickListener(info ->
-                ShareUtils.shareText(requireContext(), info.getName(), info.getUrl(),
-                        info.getThumbnails())));
+                tmpHandleShare()));
+        // ShareUtils.shareText(requireContext(), info.getName(), info.getUrl(),
+        //   info.getThumbnails())));
+        //----------------//
         binding.detailControlsOpenInBrowser.setOnClickListener(makeOnClickListener(info ->
                 ShareUtils.openUrlInBrowser(requireContext(), info.getUrl())));
+
         binding.detailControlsPlayWithKodi.setOnClickListener(makeOnClickListener(info ->
                 KoreUtils.playWithKore(requireContext(), Uri.parse(info.getUrl()))));
+
         if (DEBUG) {
             binding.detailControlsCrashThePlayer.setOnClickListener(v ->
                     VideoDetailPlayerCrasher.onCrashThePlayer(requireContext(), player));
@@ -532,6 +539,14 @@ public final class VideoDetailFragment
         });
     }
 
+
+    private void tmpHandleShare() {
+        if (isPlayerAvailable()) {
+            player.pause();
+            showExternalVideoPlaybackDialog();
+        }
+    }
+
     private View.OnClickListener makeOnClickListener(final Consumer<StreamInfo> consumer) {
         return v -> {
             if (!isLoading.get() && currentInfo != null) {
@@ -553,10 +568,10 @@ public final class VideoDetailFragment
         }));
 
         binding.detailControlsBackground.setOnLongClickListener(makeOnLongClickListener(info ->
-            openBackgroundPlayer(true)
+                openBackgroundPlayer(true)
         ));
         binding.detailControlsPopup.setOnLongClickListener(makeOnLongClickListener(info ->
-            openPopupPlayer(true)
+                openPopupPlayer(true)
         ));
         binding.detailControlsDownload.setOnLongClickListener(makeOnLongClickListener(info ->
                 NavigationHelper.openDownloads(activity)));
@@ -1460,7 +1475,7 @@ public final class VideoDetailFragment
 
         binding.detailToggleSecondaryControlsView.setVisibility(View.GONE);
         binding.detailTitleRootLayout.setClickable(false);
-        binding.detailSecondaryControlPanel.setVisibility(View.GONE);
+     //   binding.detailSecondaryControlPanel.setVisibility(View.GONE);
 
         if (binding.relatedItemsLayout != null) {
             if (showRelatedItems) {
@@ -1559,7 +1574,7 @@ public final class VideoDetailFragment
         binding.detailTitleRootLayout.setClickable(true);
         binding.detailToggleSecondaryControlsView.setRotation(0);
         binding.detailToggleSecondaryControlsView.setVisibility(View.VISIBLE);
-        binding.detailSecondaryControlPanel.setVisibility(View.GONE);
+      //  binding.detailSecondaryControlPanel.setVisibility(View.GONE);
 
         checkUpdateProgressInfo(info);
         PicassoHelper.loadDetailsThumbnail(info.getThumbnails()).tag(PICASSO_VIDEO_DETAILS_TAG)

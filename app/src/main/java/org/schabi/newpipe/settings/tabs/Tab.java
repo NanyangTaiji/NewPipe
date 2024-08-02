@@ -11,6 +11,7 @@ import com.grack.nanojson.JsonObject;
 import com.grack.nanojson.JsonStringWriter;
 
 import org.schabi.newpipe.R;
+import org.schabi.newpipe.YoutubeFragment;
 import org.schabi.newpipe.database.LocalItem.LocalItemType;
 import org.schabi.newpipe.error.ErrorInfo;
 import org.schabi.newpipe.error.ErrorUtil;
@@ -242,7 +243,9 @@ public abstract class Tab {
 
         @Override
         public String getTabName(final Context context) {
-            return context.getString(R.string.fragment_feed_title);
+            //
+            return "Youtube Official";
+           // return context.getString(R.string.fragment_feed_title);
         }
 
         @DrawableRes
@@ -251,9 +254,11 @@ public abstract class Tab {
             return R.drawable.ic_subscriptions;
         }
 
+        //TODO ny
         @Override
-        public FeedFragment getFragment(final Context context) {
-            return new FeedFragment();
+        public YoutubeFragment getFragment(final Context context) {
+
+            return new YoutubeFragment();
         }
     }
 

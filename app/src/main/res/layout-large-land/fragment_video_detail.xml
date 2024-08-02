@@ -498,7 +498,7 @@
                             android:orientation="horizontal"
                             android:paddingHorizontal="@dimen/detail_control_padding"
                             android:paddingBottom="@dimen/detail_control_padding"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             tools:visibility="visible">
 
                             <org.schabi.newpipe.views.NewPipeTextView
